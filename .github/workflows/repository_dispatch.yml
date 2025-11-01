@@ -1,0 +1,17 @@
+name: Artifact Image Push Trigger
+
+on:
+  workflow_dispatch:
+    inputs:
+      image:        { required: true }
+      tag:          { required: true }
+      artifact_path: { required: true }
+
+jobs:
+  handle:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "image=${{ github.event.inputs.image }}"
+          echo "tag=${{ github.event.inputs.tag }}"
+          echo "artifact=${{ github.event.inputs.artifact_path }}"
